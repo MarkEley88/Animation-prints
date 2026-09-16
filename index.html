@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Animation Prints</title>
+  <style>
+    *{box-sizing:border-box}body{margin:0;font-family:Inter,system-ui,-apple-system,sans-serif;background:#faf8f5;color:#171717}header{padding:28px 6%;display:flex;justify-content:space-between;align-items:center}header strong{font-size:20px}.hero{max-width:980px;margin:35px auto;padding:0 24px;text-align:center}.hero h1{font-size:clamp(38px,7vw,70px);line-height:1;margin:0 0 18px;letter-spacing:-2px}.hero p{font-size:18px;color:#666;max-width:650px;margin:0 auto 34px}.card{background:white;border:1px solid #e8e3dc;border-radius:24px;padding:28px;text-align:left;box-shadow:0 12px 40px #0000000b}.drop{border:2px dashed #cfc7bd;border-radius:18px;padding:48px 20px;text-align:center;cursor:pointer}.drop:hover{border-color:#111}.drop input{display:none}.drop b{display:block;font-size:20px;margin-bottom:8px}.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:22px}.step{padding:18px;background:#f5f2ed;border-radius:16px}.step span{font-size:13px;color:#777}.step strong{display:block;margin-top:5px}.styles{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px}.style{border:1px solid #ddd6ce;border-radius:999px;padding:10px 15px;background:#fff;cursor:pointer}.style.active{background:#171717;color:white;border-color:#171717}.preview{margin-top:24px;text-align:center}.preview img{max-width:100%;max-height:420px;border-radius:18px;display:none;margin:auto}.cta{display:none;margin-top:18px;width:100%;padding:15px;border:0;border-radius:12px;background:#171717;color:white;font-size:16px;cursor:pointer}@media(max-width:650px){.steps{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+<header><strong>✦ Animation Prints</strong><span>Turn memories into art</span></header>
+<main class="hero">
+  <h1>Your photo.<br>Reimagined.</h1>
+  <p>Upload a family photo, choose an illustration style, and create artwork ready for prints, gifts and keepsakes.</p>
+  <section class="card">
+    <label class="drop" for="photo"><b>Upload a photo</b><span>JPG, PNG or WEBP · Start with one clear photo</span><input id="photo" type="file" accept="image/*"></label>
+    <div class="steps"><div class="step"><span>01</span><strong>Upload</strong></div><div class="step"><span>02</span><strong>Choose a style</strong></div><div class="step"><span>03</span><strong>Create your artwork</strong></div></div>
+    <div id="styleArea" style="display:none"><h3>Choose your style</h3><div class="styles" id="styles"></div><button class="cta" id="create">Create my artwork →</button></div>
+    <div class="preview"><img id="preview"><p id="status"></p></div>
+  </section>
+</main>
+<script>
+const styles=['Anime','Fairytale Animation','3D Cartoon','Comic Book','Chibi','Watercolour','Pencil Illustration','Pop Art'];
+let selected=styles[1]; const stylesEl=document.getElementById('styles');
+styles.forEach(s=>{const b=document.createElement('button');b.className='style'+(s===selected?' active':'');b.textContent=s;b.onclick=()=>{selected=s;document.querySelectorAll('.style').forEach(x=>x.classList.remove('active'));b.classList.add('active')}}); styles.forEach(s=>{}); stylesEl.replaceChildren(...stylesEl.children);
+// rebuild buttons (keeps the code deliberately dependency-free)
+stylesEl.innerHTML=styles.map(s=>`<button class="style ${s===selected?'active':''}" data-style="${s}">${s}</button>`).join('');
+stylesEl.querySelectorAll('.style').forEach(b=>b.onclick=()=>{selected=b.dataset.style;stylesEl.querySelectorAll('.style').forEach(x=>x.classList.remove('active'));b.classList.add('active')});
+const input=document.getElementById('photo'),preview=document.getElementById('preview'),area=document.getElementById('styleArea'),create=document.getElementById('create'),status=document.getElementById('status');
+input.onchange=()=>{const f=input.files[0];if(!f)return;preview.src=URL.createObjectURL(f);preview.style.display='block';area.style.display='block';create.style.display='block';status.textContent='Photo ready — choose a style above.'};
+create.onclick=()=>{status.textContent=`Ready to generate in “${selected}”. AI generation will be connected next.`};
+</script>
+</body></html>
