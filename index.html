@@ -1,34 +1,30 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Animation Prints</title>
-  <style>
-    *{box-sizing:border-box}body{margin:0;font-family:Inter,system-ui,-apple-system,sans-serif;background:#faf8f5;color:#171717}header{padding:28px 6%;display:flex;justify-content:space-between;align-items:center}header strong{font-size:20px}.hero{max-width:980px;margin:35px auto;padding:0 24px;text-align:center}.hero h1{font-size:clamp(38px,7vw,70px);line-height:1;margin:0 0 18px;letter-spacing:-2px}.hero p{font-size:18px;color:#666;max-width:650px;margin:0 auto 34px}.card{background:white;border:1px solid #e8e3dc;border-radius:24px;padding:28px;text-align:left;box-shadow:0 12px 40px #0000000b}.drop{border:2px dashed #cfc7bd;border-radius:18px;padding:48px 20px;text-align:center;cursor:pointer}.drop:hover{border-color:#111}.drop input{display:none}.drop b{display:block;font-size:20px;margin-bottom:8px}.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:22px}.step{padding:18px;background:#f5f2ed;border-radius:16px}.step span{font-size:13px;color:#777}.step strong{display:block;margin-top:5px}.styles{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px}.style{border:1px solid #ddd6ce;border-radius:999px;padding:10px 15px;background:#fff;cursor:pointer}.style.active{background:#171717;color:white;border-color:#171717}.preview{margin-top:24px;text-align:center}.preview img{max-width:100%;max-height:420px;border-radius:18px;display:none;margin:auto}.cta{display:none;margin-top:18px;width:100%;padding:15px;border:0;border-radius:12px;background:#171717;color:white;font-size:16px;cursor:pointer}@media(max-width:650px){.steps{grid-template-columns:1fr}}
-  </style>
-</head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Animation Prints — Turn memories into art</title>
+<style>
+*{box-sizing:border-box}body{margin:0;font-family:Inter,system-ui,-apple-system,sans-serif;background:#faf8f5;color:#171717}header{padding:24px 6%;display:flex;justify-content:space-between;align-items:center}header strong{font-size:20px}header span{color:#777;font-size:14px}.hero{max-width:1040px;margin:35px auto;padding:0 22px}.hero h1{text-align:center;font-size:clamp(42px,7vw,72px);line-height:.98;letter-spacing:-3px;margin:0 0 16px}.hero>p{text-align:center;color:#666;font-size:18px;max-width:680px;margin:0 auto 32px}.card{background:#fff;border:1px solid #e7e1d9;border-radius:26px;padding:28px;box-shadow:0 18px 60px #0000000b}.drop{display:block;border:2px dashed #d2c9bf;border-radius:18px;padding:42px 20px;text-align:center;cursor:pointer}.drop:hover{border-color:#171717}.drop input{display:none}.drop b{display:block;font-size:21px;margin-bottom:7px}.drop small{color:#777}.section{margin-top:26px}.section h3{margin:0 0 12px}.chips{display:flex;flex-wrap:wrap;gap:9px}.chip{border:1px solid #ddd6ce;border-radius:999px;padding:10px 14px;background:#fff;cursor:pointer}.chip.active{background:#171717;color:#fff;border-color:#171717}.scenes{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.scene{border:1px solid #ddd6ce;background:#faf8f5;border-radius:14px;padding:15px;text-align:center;cursor:pointer}.scene.active{outline:2px solid #171717;background:#fff}.products{display:grid;grid-template-columns:repeat(5,1fr);gap:10px}.product{border:1px solid #ddd6ce;border-radius:14px;padding:16px 8px;text-align:center;cursor:pointer;background:#fff}.product.active{background:#171717;color:#fff}.preview{margin-top:26px;background:#f4f0ea;border-radius:20px;min-height:260px;display:flex;align-items:center;justify-content:center;overflow:hidden;position:relative}.preview img{max-width:100%;max-height:420px;display:none}.empty{text-align:center;color:#777;padding:30px}.cta{width:100%;margin-top:18px;padding:16px;border:0;border-radius:13px;background:#171717;color:#fff;font-size:16px;font-weight:650;cursor:pointer}.cta:disabled{opacity:.45;cursor:not-allowed}.status{text-align:center;color:#666;margin:12px 0 0;min-height:20px}@media(max-width:700px){.scenes{grid-template-columns:repeat(2,1fr)}.products{grid-template-columns:repeat(2,1fr)}header span{display:none}}
+</style></head>
 <body>
 <header><strong>✦ Animation Prints</strong><span>Turn memories into art</span></header>
-<main class="hero">
-  <h1>Your photo.<br>Reimagined.</h1>
-  <p>Upload a family photo, choose an illustration style, and create artwork ready for prints, gifts and keepsakes.</p>
-  <section class="card">
-    <label class="drop" for="photo"><b>Upload a photo</b><span>JPG, PNG or WEBP · Start with one clear photo</span><input id="photo" type="file" accept="image/*"></label>
-    <div class="steps"><div class="step"><span>01</span><strong>Upload</strong></div><div class="step"><span>02</span><strong>Choose a style</strong></div><div class="step"><span>03</span><strong>Create your artwork</strong></div></div>
-    <div id="styleArea" style="display:none"><h3>Choose your style</h3><div class="styles" id="styles"></div><button class="cta" id="create">Create my artwork →</button></div>
-    <div class="preview"><img id="preview"><p id="status"></p></div>
-  </section>
-</main>
+<main class="hero"><h1>Your photo.<br>Reimagined.</h1><p>Create a personalised illustrated memory, choose the scene, then see how it could look on a real product.</p>
+<section class="card">
+<label class="drop" for="photo"><b>Upload a photo</b><small>JPG, PNG or WEBP · One clear photo works best</small><input id="photo" type="file" accept="image/*"></label>
+<div class="section" id="styleSection"><h3>1. Choose an illustration style</h3><div class="chips" id="styles"></div></div>
+<div class="section" id="sceneSection"><h3>2. Choose a scene</h3><div class="scenes" id="scenes"></div></div>
+<div class="section" id="productSection"><h3>3. Choose a product</h3><div class="products" id="products"></div></div>
+<div class="preview"><div class="empty" id="empty">Your artwork preview will appear here</div><img id="preview" alt="Uploaded photo preview"></div>
+<button class="cta" id="create" disabled>Create my artwork →</button><div class="status" id="status"></div>
+</section></main>
 <script>
 const styles=['Anime','Fairytale Animation','3D Cartoon','Comic Book','Chibi','Watercolour','Pencil Illustration','Pop Art'];
-let selected=styles[1]; const stylesEl=document.getElementById('styles');
-styles.forEach(s=>{const b=document.createElement('button');b.className='style'+(s===selected?' active':'');b.textContent=s;b.onclick=()=>{selected=s;document.querySelectorAll('.style').forEach(x=>x.classList.remove('active'));b.classList.add('active')}}); styles.forEach(s=>{}); stylesEl.replaceChildren(...stylesEl.children);
-// rebuild buttons (keeps the code deliberately dependency-free)
-stylesEl.innerHTML=styles.map(s=>`<button class="style ${s===selected?'active':''}" data-style="${s}">${s}</button>`).join('');
-stylesEl.querySelectorAll('.style').forEach(b=>b.onclick=()=>{selected=b.dataset.style;stylesEl.querySelectorAll('.style').forEach(x=>x.classList.remove('active'));b.classList.add('active')});
-const input=document.getElementById('photo'),preview=document.getElementById('preview'),area=document.getElementById('styleArea'),create=document.getElementById('create'),status=document.getElementById('status');
-input.onchange=()=>{const f=input.files[0];if(!f)return;preview.src=URL.createObjectURL(f);preview.style.display='block';area.style.display='block';create.style.display='block';status.textContent='Photo ready — choose a style above.'};
-create.onclick=()=>{status.textContent=`Ready to generate in “${selected}”. AI generation will be connected next.`};
-</script>
-</body></html>
+const scenes=['Keep original','Beach','Christmas','Football','Birthday','Travel','Custom'];
+const products=['T-shirt','Hoodie','Mug','Canvas','Poster'];
+let selected={style:'Fairytale Animation',scene:'Keep original',product:'Canvas'},photo=false;
+function render(list,id,key,cls){const el=document.getElementById(id);el.innerHTML=list.map(x=>`<button class="${cls} ${x===selected[key]?'active':''}" data-value="${x}">${x}</button>`).join('');el.querySelectorAll('button').forEach(b=>b.onclick=()=>{selected[key]=b.dataset.value;render(list,id,key,cls);check()})}
+render(styles,'styles','style','chip');render(scenes,'scenes','scene','scene');render(products,'products','product','product');
+const input=document.getElementById('photo'),preview=document.getElementById('preview'),empty=document.getElementById('empty'),create=document.getElementById('create'),status=document.getElementById('status');
+input.onchange=()=>{const f=input.files[0];if(!f)return;photo=true;preview.src=URL.createObjectURL(f);preview.style.display='block';empty.style.display='none';status.textContent='Photo ready. Choose your options, then create your artwork.';check()};
+function check(){create.disabled=!photo}
+create.onclick=()=>{create.disabled=true;create.textContent='Preparing artwork…';status.textContent=`Style: ${selected.style} · Scene: ${selected.scene} · Product: ${selected.product}`;setTimeout(()=>{create.textContent='Create my artwork →';create.disabled=false;status.textContent+=' AI image generation is the next connection — this prototype has captured the complete customer journey.'},500)};
+</script></body></html>
